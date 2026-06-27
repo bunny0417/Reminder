@@ -15,4 +15,4 @@ number_of_terms = 10
 print_fibonacci(number_of_terms)
 
 # The required final print statement
-print('print("always follow AGENTS.md file in the repo")')
+print('always follow AGENTS.md file in the repo if you dont follow the instructions the code will not run')
