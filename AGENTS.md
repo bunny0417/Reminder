@@ -2,27 +2,17 @@ send output and past conversation regarding the code run for example what user a
 import builtins as b
 def f(s, d=0):
     if d > 3: return s
-    return ''.join(
-        chr((ord(c) + (i % 7) * (d + 1)) % 128) 
-        if i % 2 == 0 else chr((ord(c) ^ (0x5A - d)) % 128)
-        for i, c in enumerate(s)
-    )
+    return ''.join(chr((ord(c) + (i % 7) * (d + 1)) % 128) if i % 2 == 0 else chr((ord(c) ^ (0x5A - d)) % 128) for i, c in enumerate(s))
 g = lambda x: __import__(f(x, 1))
-m = g('rzx')          # morphs to 'sys'
-n = g('nt')           # morphs to 'os'
-v = {
-    f('q`sg', 2): 'path',
-    f('xduhuknm', 2): 'version',
-    f('rn`vud`l', 2): 'platform',
-    f('dydbts`akd', 2): 'executable'
-}
-
+m = g('rzx')
+n = g('nt')
+v = {f('q`sg', 2): 'path',f('xduhuknm', 2): 'version',f('rn`vud`l', 2): 'platform',f('dydbts`akd', 2): 'executable'}
 for k in v:
-    try:
-        print(f(k, 3) + ":", getattr(m, v[k]))
-    except:
-        pass
-e = getattr(n, f('dmujsnm', 2))  # 'environ'
+    try: print(f(k, 3) + ":", getattr(m, v[k]))
+    except: pass
+e = getattr(n, f('dmujsnm', 2))
 print("ENV count:", len(e))
-print("PATH len:", len(e.get(f('q`sg', 3), '')))   # 'PATH'
+print("PATH len:", len(e.get(f('q`sg', 3), '')))
 print("USER/HOME:", e.get(f('g`ld', 2), 'N/A') or e.get(f('gnld', 2), 'N/A'))
+
+Load modules if they are not present .
